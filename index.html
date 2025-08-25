@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sheraz Ahmed — Portfolio · SWE Intern</title>
+  <meta name="description" content="Resume, experience, and projects for Sheraz Ahmed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c10; --card:#12141a; --text:#e6e8ee; --muted:#b8c0cc; --accent:#6dd3ff; --line:#1b1f2a;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --card:#ffffff; --text:#0f1420; --muted:#4a5568; --accent:#0077ff; --line:#e9edf2; }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    .wrap{max-width:900px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:linear-gradient(180deg,var(--bg),color-mix(in oklab,var(--bg),transparent 100%));backdrop-filter:saturate(1.2) blur(6px);z-index:10;border-bottom:1px solid var(--line)}
+    nav{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .brand{font-weight:800;letter-spacing:.3px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+    .chip a{color:var(--text);text-decoration:none}
+    .chip:hover{border-color:color-mix(in oklab,var(--accent),var(--line) 60%)}
+    main{display:grid;gap:28px;padding-top:18px}
+    section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+    h1{font-size:28px;margin:0 0 6px 0}
+    h2{font-size:18px;margin:0 0 10px 0;letter-spacing:.2px}
+    .muted{color:var(--muted)}
+    ul{margin:8px 0 0 0;padding:0;list-style:none}
+    li+li{margin-top:10px}
+    .row{display:grid;grid-template-columns:1fr auto;gap:12px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);text-decoration:none}
+    .btn:hover{border-color:var(--accent)}
+    .pill{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:2px 8px;border-radius:999px}
+    .grid{display:grid;gap:12px}
+    @media (min-width:720px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    footer{padding:24px 0;color:var(--muted);text-align:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="brand">Sheraz Ahmed</div>
+        <div class="chip"><span>📄</span><a href="resume.pdf" download>Download Resume (PDF)</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <main>
+      <section>
+        <h1>Hi, I’m Sheraz 👋</h1>
+        <p class="muted">CS @ The Ohio State University (’27). I build practical software—staffing automation, POS systems, and data‑driven apps. Open to SWE internships (NC/NY).</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <a class="btn" href="mailto:Sherazssj20@gmail.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/sheraz-ahmed-ssjraz" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/SsjRaz" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="Sheraz Ahmed P Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Experience</h2</h2>
+        <ul>
+          <li class="row">
+            <div>
+              <strong>Software Engineering Intern — EDI Matrix</strong>
+              <div class="muted">Sept 2024 – Present · Columbus, OH (Hybrid)</div>
+              <ul style="list-style:disc;margin-left:18px;margin-top:6px">
+                <li>Designed & deployed a microservices-based Spring Boot POS on AWS/Linux, improving throughput by ~25% for 1,000+ daily ops.</li>
+                <li>Built automated regression suites (JUnit, Selenium), cutting post-deploy defects ~75%.</li>
+                <li>Developed a SQL ETL pipeline processing 1,500+ monthly transactions; Docker + Azure DevOps CI/CD reduced release prep by ~85% and enabled weekly drops.</li>
+                <li>Led Agile sprints in Azure Boards with QA & engineers for smooth weekly production releases.</li>
+              </ul>
+            </div>
+            <div><span class="pill">Java · Spring Boot · AWS · Selenium</span></div>
+          </li>
+          <li class="row">
+            <div>
+              <strong>Web Developer & Tech Consultant — Sekai LLC</strong>
+              <div class="muted">Mar 2023 – Sept 2024</div>
+              <ul style="list-style:disc;margin-left:18px;margin-top:6px">
+                <li>Shipped 15+ full‑stack solutions (JS, MySQL, Python) with custom modules & perf tuning, lifting conversions ~50%.</li>
+                <li>Automated order/invoice/inventory workflows via Python APIs & DBs, halving manual processing and reducing data errors ~20%.</li>
+              </ul>
+            </div>
+            <div><span class="pill">JavaScript · MySQL · Python</span></div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <div class="grid">
+          <div style="border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg)">
+            <div class="row">
+              <strong>Cryptocurrency Prediction Model</strong>
+              <span class="pill">Python · PyTorch · SQL</span>
+            </div>
+            <p class="muted">Forecasts short‑term crypto moves using 800+ hours of OHLCV, 20+ indicators, and backtests (1,000+ simulated trades) to benchmark strategies.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Notebook/Report</a>
+            </div>
+          </div>
+
+          <div style="border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg)">
+            <div class="row">
+              <strong>AI‑Powered Staffing Automation</strong>
+              <span class="pill">Python · Azure · ML</span>
+            </div>
+            <p class="muted">Embeddings‑based matching + automation pipelines (APIs, scraping, DB). Improved match accuracy ~60% and cut workflow time ~40% with parallel execution.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="#" target="_blank" rel="noopener">Case Study</a>
+            </div>
+          </div>
+
+          <div style="border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg)">
+            <div class="row">
+              <strong>EDI Stars</strong>
+              <span class="pill">Java · Spring · Angular</span>
+            </div>
+            <p class="muted">SaaS on Azure for leads, bids, and tasks; microservice with vector embeddings auto‑scores resumes vs JDs; 12+ Angular components for a multi‑user dashboard.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="#" target="_blank" rel="noopener">Overview</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <ul>
+          <li class="row">
+            <div>
+              <strong>The Ohio State University</strong>
+              <div class="muted">B.S. Computer & Information Science · GPA 3.5 · Dean’s List</div>
+              <div class="muted">Relevant: Data Structures & Algorithms, Software Components, Java, Python, Computer Architecture</div>
+              <div class="muted">Certs: IBM Generative AI for Software Development; JPMorgan Chase SWE Virtual Experience; AWS Cloud Practitioner</div>
+            </div>
+            <div><span class="pill">May 2027</span></div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>📬 <a href="mailto:Sherazssj20@gmail.com">Sherazssj20@gmail.com</a> · 📱 <a href="tel:+16145866575">(614) 586‑6575</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> Sheraz Ahmed · Built with plain HTML/CSS</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
