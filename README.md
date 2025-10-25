@@ -32,11 +32,9 @@ Showcases experience, selected projects, hackathons, and education with smooth n
 ## Projects
 - **NBA Prediction Model** — *In progress*  
   Python, Pandas, PyTorch — end-to-end pipeline for NBA game predictions.  
-  Repo: <https://github.com/akhaliq0/NBA-Prediction-Model>
 
 - **Cryptocurrency Prediction Model** — *In progress*  
   Python, PyTorch, SQL — short-term forecasting using OHLCV data and ML.  
-  Report: `assets/Cryptocurrency-Prediction-Model-Doc.pdf` (repo private)
 
 - **AI-Powered Staffing Automation**  
   Python, Azure, ML — embeddings-based matching and workflow automation.  
