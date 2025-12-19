@@ -3,100 +3,451 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sheraz Ahmed — Portfolio · SWE Intern</title>
-  <meta name="description" content="Resume, experience, and projects for Sheraz Ahmed." />
+  <title>Sheraz Ahmed — Portfolio</title>
+  <meta name="description" content="Portfolio, experience, and projects for Sheraz Ahmed." />
+  <meta name="theme-color" content="#070A12" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ====== THEME ====== */
     :root{
-      --bg:#0a0b10; --card:#12141a; --text:#e9ecf3; --muted:#B5BECC;
-      --accent:#7fd3ff; --accent-strong:#3bbdff; --line:#1b2030; --shadow: 0 8px 24px rgba(0,0,0,.35);
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f6f8fc; --card:#ffffff; --text:#0e1422; --muted:#5a6577; --accent:#0a84ff; --accent-strong:#006DDB; --line:#e8edf4; --shadow:0 8px 20px rgba(16,38,84,.08); }
+      --bg:#070A12;
+      --bg2:#0B1020;
+      --card:rgba(16,20,34,.72);
+      --text:#EAF0FF;
+      --muted:#9AA6BF;
+      --line:rgba(148,163,184,.16);
+
+      --accent:#7CDAFF;
+      --accent2:#8B5CFF;
+      --accent3:#20E3B2;
+
+      --shadow:0 18px 55px rgba(0,0,0,.45);
+      --shadow2:0 10px 30px rgba(0,0,0,.30);
+
+      --radius:18px;
+      --radius2:14px;
+      --max:1080px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
-    /* ====== BASE ====== */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+    }
+
     *{box-sizing:border-box}
-    html,body{margin:0;height:100%}
+    html,body{height:100%}
     html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-    .wrap{max-width:1000px;margin:0 auto;padding:20px}
-    .muted{color:var(--muted)}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 12% 12%, rgba(124,218,255,.14), transparent 55%),
+        radial-gradient(820px 520px at 88% 18%, rgba(139,92,255,.12), transparent 55%),
+        radial-gradient(900px 520px at 55% 92%, rgba(32,227,178,.09), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+
     a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
+    .muted{color:var(--muted)}
+    .stack{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .mono{font-family:var(--mono)}
 
-    /* ====== HEADER / NAV ====== */
+    /* subtle grain */
+    .grain{
+      pointer-events:none;
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+      opacity:.10;
+      mix-blend-mode:overlay;
+      z-index:0;
+    }
+
+    /* header/nav */
     header{
-      position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
-      background:linear-gradient(180deg,var(--bg) 60%,transparent);
-      backdrop-filter:saturate(1.2) blur(6px);
+      position:sticky; top:0; z-index:20;
+      background: linear-gradient(180deg, rgba(7,10,18,.95), rgba(7,10,18,.55), transparent);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(10px) saturate(1.15);
     }
-    nav{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .brand{font-weight:800;letter-spacing:.2px}
-    .nav-links{display:flex;gap:6px;flex-wrap:wrap}
+    nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap; padding:10px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.2px; white-space:nowrap;
+    }
+    .brand .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 3px rgba(124,218,255,.10), 0 0 26px rgba(124,218,255,.20);
+    }
+    .nav-links{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
     .nav-btn{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);
-      text-decoration:none;font-weight:600;font-size:14px;opacity:.92;
-      transition:border-color .2s, transform .05s, background .2s;
+      display:inline-flex; align-items:center;
+      padding:9px 12px;
+      border:1px solid rgba(148,163,184,.14);
+      border-radius:12px;
+      background: rgba(16,20,34,.55);
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+      opacity:.92;
+      transition: transform .12s ease, border-color .2s ease, background .2s ease;
     }
-    .nav-btn:hover{border-color:color-mix(in oklab,var(--accent),var(--line) 55%)}
-    .nav-btn:active{transform:translateY(1px)}
+    .nav-btn:hover{
+      border-color: rgba(124,218,255,.35);
+      transform: translateY(-1px);
+      background: rgba(16,20,34,.72);
+    }
     .nav-btn.active, .nav-btn[aria-current="page"]{
-      border-color:var(--accent); box-shadow: inset 0 0 0 1px color-mix(in oklab,var(--accent-strong),transparent 40%);
+      border-color: rgba(124,218,255,.58);
+      box-shadow: inset 0 0 0 1px rgba(124,218,255,.18);
+    }
+    .resume-chip{
+      display:inline-flex; align-items:center;
+      padding:9px 12px;
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:999px;
+      background: rgba(16,20,34,.60);
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+      transition: border-color .2s ease, transform .12s ease, background .2s ease;
+      white-space:nowrap;
+    }
+    .resume-chip:hover{
+      border-color: rgba(32,227,178,.42);
+      transform: translateY(-1px);
+      background: rgba(16,20,34,.78);
     }
 
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
-    .chip a{text-decoration:none}
-
-    /* ====== LAYOUT / SECTIONS ====== */
-    main{display:grid;gap:28px;padding-top:18px}
+    /* sections */
+    main{position:relative; z-index:1; display:grid; gap:18px; padding-top:18px}
     section{
-      background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;
+      background: var(--card);
+      border: 1px solid rgba(148,163,184,.16);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      scroll-margin-top:84px; /* comp for sticky header when scrolling to anchors */
-      position:relative;overflow:hidden;
+      overflow:hidden;
+      position:relative;
+      scroll-margin-top: 90px;
     }
+    .section-inner{padding:22px}
     section::before{
-      content:""; position:absolute; inset:0 0 auto 0; height:3px;
-      background:linear-gradient(90deg,var(--accent),color-mix(in oklab,var(--accent),transparent 40%));
-      opacity:.7;
-    }
-    h1{font-size:30px;margin:0 0 8px}
-    h2{font-size:20px;margin:0 0 12px;letter-spacing:.2px}
-    ul{margin:8px 0 0 0;padding:0;list-style:none}
-    li+li{margin-top:12px}
-    .row{display:grid;grid-template-columns:1fr auto;gap:12px}
-    .pill{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:3px 10px;border-radius:999px;white-space:nowrap}
-
-    /* ====== BUTTONS / CARDS ====== */
-    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);text-decoration:none;font-weight:600}
-    .btn:hover{border-color:var(--accent)}
-    .btn.primary{background:linear-gradient(180deg,var(--accent),var(--accent-strong));color:white;border-color:transparent}
-
-    .grid{display:grid;gap:12px}
-    @media (min-width:760px){ .grid{grid-template-columns:repeat(2,1fr)} }
-
-    .card{
-      border:1px solid var(--line);border-radius:12px;padding:14px;background:color-mix(in oklab,var(--bg),var(--card) 70%);
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:2px;
+      background: linear-gradient(90deg, rgba(124,218,255,.75), rgba(139,92,255,.55), rgba(32,227,178,.45));
+      opacity:.55;
     }
 
-    footer{padding:32px 0 10px;color:var(--muted);text-align:center}
+    /* hero */
+    .hero{
+      background:
+        radial-gradient(1000px 520px at 18% 20%, rgba(124,218,255,.14), transparent 55%),
+        radial-gradient(900px 520px at 84% 30%, rgba(139,92,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(16,20,34,.55), rgba(16,20,34,.30));
+    }
+    h1{
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      margin:0 0 8px;
+      letter-spacing: -0.6px;
+    }
+    .subline{color:var(--muted); margin:0 0 14px}
 
-    /* ====== SMALL UTIL ====== */
-    .stack{display:flex;gap:10px;flex-wrap:wrap}
+    /* buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,.16);
+      background: rgba(7,10,18,.55);
+      text-decoration:none;
+      font-weight:700;
+      font-size:13px;
+      transition: transform .12s ease, border-color .2s ease, background .2s ease;
+      box-shadow: var(--shadow2);
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(124,218,255,.40);
+      background: rgba(7,10,18,.70);
+    }
+    .btn.primary{
+      border: 1px solid rgba(124,218,255,.30);
+      background: linear-gradient(135deg, rgba(124,218,255,.16), rgba(139,92,255,.14));
+    }
+
+    /* headings */
+    .title-row{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      padding: 18px 22px 0;
+    }
+    h2{margin:0; font-size:18px; letter-spacing:.2px}
+    .title-row .hint{
+      color: var(--muted);
+      font-size: 12px;
+      font-family: var(--mono);
+      opacity: .9;
+    }
+
+    /* item blocks */
+    .list{padding: 10px 22px 18px}
+    .item{
+      padding: 14px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(148,163,184,.14);
+      background: rgba(7,10,18,.32);
+      margin-top: 12px;
+      transition: transform .14s ease, border-color .22s ease, background .22s ease;
+    }
+    .item:hover{
+      transform: translateY(-2px);
+      border-color: rgba(124,218,255,.28);
+      background: rgba(7,10,18,.42);
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items:start;
+    }
+    .pill{
+      font-size: 12px;
+      color: rgba(234,240,255,.78);
+      border: 1px solid rgba(148,163,184,.14);
+      background: rgba(16,20,34,.35);
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+      height: fit-content;
+    }
+    .item strong{font-size:14px}
+    .item .meta{color:var(--muted); font-size:13px; margin-top:2px}
+
+    .bullets{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: rgba(234,240,255,.86);
+    }
+    .bullets li{margin-top: 8px}
+    .bullets li::marker{color: rgba(124,218,255,.70)}
+
+    /* project grids */
+    .grid{
+      display:grid;
+      gap: 12px;
+      padding: 10px 22px 18px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 820px){
+      .grid{grid-template-columns: repeat(2, 1fr)}
+    }
+
+    .p-card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(148,163,184,.14);
+      background: rgba(7,10,18,.32);
+      padding: 14px;
+      transition: transform .14s ease, border-color .22s ease, background .22s ease;
+      position:relative;
+      overflow:hidden;
+      min-height: 160px;
+    }
+    .p-card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(139,92,255,.26);
+      background: rgba(7,10,18,.42);
+    }
+    .p-card::before{
+      content:"";
+      position:absolute;
+      inset:-90px -130px auto auto;
+      width:240px; height:240px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,218,255,.18), transparent 60%);
+      transform: rotate(18deg);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .p-head{
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap:10px;
+    }
+    .p-title{font-weight:800; margin:0; font-size:14px}
+    .p-desc{margin:8px 0 12px; color: var(--muted); font-size:13px}
+    .p-links{display:flex; gap:10px; flex-wrap:wrap}
+
+    .link{
+      display:inline-flex;
+      align-items:center;
+      text-decoration:none;
+      font-weight:700;
+      font-size: 13px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,.14);
+      background: rgba(7,10,18,.45);
+      transition: border-color .22s ease, transform .12s ease, background .22s ease;
+    }
+    .link:hover{
+      border-color: rgba(124,218,255,.34);
+      transform: translateY(-1px);
+      background: rgba(7,10,18,.62);
+    }
+
+  /* company projects block */
+  .company-wrap{
+    padding: 0 22px 18px;
+  }
+  .company-divider{
+    height: 1px;
+    margin: 12px auto 14px;
+    width: 80%;
+    background: linear-gradient(90deg, transparent, rgba(148,163,184,.22), transparent);
+  }
+  .company-head{
+    margin: 6px 0 10px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .company-title{
+    font-weight:800;
+    letter-spacing:.2px;
+    font-size: 13px;
+  }
+  .company-title .label{
+    display:inline-flex;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,.14);
+    background: rgba(7,10,18,.30);
+  }
+
+  /* KEY CHANGE: stop the company cards from spanning the whole section */
+  .company-grid{
+    display:grid;
+    gap: 12px;
+    max-width: 680px;     /* controls how “long” the row can get */
+    margin: 0 auto;       /* centers the grid */
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 820px){
+    .company-grid{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* keep the cards compact */
+  .c-card{
+    border-radius: var(--radius2);
+    border: 1px solid rgba(148,163,184,.14);
+    background: rgba(7,10,18,.32);
+    padding: 12px;
+    transition: transform .14s ease, border-color .22s ease, background .22s ease;
+    position:relative;
+    overflow:hidden;
+    min-height: 140px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .c-card:hover{
+    transform: translateY(-2px);
+    border-color: rgba(139,92,255,.26);
+    background: rgba(7,10,18,.42);
+  }
+  .c-card::before{
+    content:"";
+    position:absolute;
+    inset:-70px -110px auto auto;
+    width:200px; height:200px;
+    background: radial-gradient(circle at 30% 30%, rgba(124,218,255,.14), transparent 60%);
+    transform: rotate(18deg);
+    opacity:.8;
+    pointer-events:none;
+  }
+  .c-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .c-name{
+    font-weight:800;
+    margin:0;
+    font-size: 13px;
+    letter-spacing:.2px;
+  }
+  .c-desc{
+    margin:8px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+
+    /* prevents description from making the box feel huge */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+    /* contact */
+    .contact{padding: 10px 22px 18px; display:grid; gap: 12px}
+    .contact-card{
+      padding: 14px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(148,163,184,.14);
+      background: rgba(7,10,18,.32);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .contact-card a{text-decoration:none}
+    .contact-k{color: var(--muted); font-size: 12px; font-family: var(--mono)}
+    .contact-v{font-weight: 800; letter-spacing: .2px}
+
+    footer{
+      padding: 26px 0 10px;
+      color: rgba(154,166,191,.85);
+      text-align:center;
+      font-size: 12px;
+    }
+
+    /* subtle scroll reveal */
+    .reveal{opacity:0; transform: translateY(10px); transition: opacity .65s ease, transform .65s ease}
+    .reveal.in{opacity:1; transform: translateY(0)}
   </style>
 </head>
 
 <body>
-  <!-- ====== HEADER ====== -->
+  <div class="grain" aria-hidden="true"></div>
+
   <header>
     <div class="wrap">
       <nav>
-        <div class="brand">Sheraz Ahmed</div>
+        <div class="brand">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Sheraz Ahmed</span>
+        </div>
+
         <div class="nav-links" id="topnav">
           <a class="nav-btn" href="#about">About</a>
           <a class="nav-btn" href="#education">Education</a>
@@ -105,178 +456,266 @@
           <a class="nav-btn" href="#hackathons">Hackathons</a>
           <a class="nav-btn" href="#contact">Contact</a>
         </div>
-        <div class="chip"><span>📄</span><a href="Sheraz_A_Resume.pdf" target="_blank" rel="noopener">View Resume (PDF)</a></div>
+
+        <a class="resume-chip" href="Sheraz_A_Resume.pdf" target="_blank" rel="noopener">
+          View Resume (PDF)
+        </a>
       </nav>
     </div>
   </header>
 
-  <!-- ====== CONTENT ====== -->
   <div class="wrap">
     <main>
+
       <!-- About -->
-      <section id="about">
-        <h1>Hi, I’m Sheraz 👋</h1>
-        <p class="muted">Computer Information Science @ The Ohio State University (’27).</p>
-        <div class="stack" style="margin-top:8px">
-          <a class="btn primary" href="mailto:Sherazssj20@gmail.com">Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/sheraz-ahmed-ssjraz" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://github.com/SsjRaz" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="Sheraz_A_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <section id="about" class="hero reveal">
+        <div class="section-inner">
+          <h1>Sheraz Ahmed</h1>
+          <p class="subline">Computer Information Science @ The Ohio State University (’27).</p>
+          <div class="stack">
+            <a class="btn primary" href="mailto:Sherazssj20@gmail.com">Email</a>
+            <a class="btn" href="https://www.linkedin.com/in/sheraz-ahmed-ssjraz" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/SsjRaz" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="Sheraz_A_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          </div>
         </div>
       </section>
 
       <!-- Education -->
-      <section id="education">
-        <h2>Education</h2>
-        <ul>
-          <li class="row">
-            <div>
-              <strong>The Ohio State University</strong>
-              <div class="muted">B.S. Computer & Information Science · GPA 3.4 · Dean’s List</div>
-              <div class="muted">Relevant Coursework: Data Structures & Algorithms, Software Components, Java, Python, Computer Architecture</div>
-              <div class="muted">Certificates: JPMorgan Chase SWE Virtual Experience · AWS Cloud Practitioner(In Progress)</div>
+      <section id="education" class="reveal">
+        <div class="title-row">
+          <h2>Education</h2>
+          <div class="hint">/ education</div>
+        </div>
+        <div class="list">
+          <div class="item">
+            <div class="row">
+              <div>
+                <strong>The Ohio State University</strong>
+                <div class="meta">B.S. Computer & Information Science · GPA 3.4 · Dean’s List</div>
+                <div class="meta">Relevant Coursework: Data Structures & Algorithms, Software Components, Java, Python, Computer Architecture</div>
+                <div class="meta">Certificates: JPMorgan Chase SWE Virtual Experience · AWS Cloud Practitioner (In Progress)</div>
+              </div>
+              <div><span class="pill">May 2027</span></div>
             </div>
-            <div><span class="pill">May 2027</span></div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </section>
 
       <!-- Experience -->
-      <section id="experience">
-        <h2>Experience</h2>
-        <ul>
-          <li class="row">
-            <div>
-              <strong>Software Engineering Intern — EDI Matrix</strong>
-              <div class="muted">Sept 2024 – Present · Columbus, OH (Hybrid)</div>
-              <ul style="list-style:disc;margin-left:18px;margin-top:8px">
-                <li>Designed and deployed end-to-end POS microservices using Java Spring Boot on AWS, integrating payment,
-inventory, and reporting modules to support 1,000+ secure transactions per day and improve system reliability</li>
-                <li>Delivered well-documented, tested, and operable code by developing JUnit & Selenium regression test suites
-using TDD, catching 95% of critical issues pre-release</li>
-                <li>Engineered SQL-based ETL pipelines on Azure cloud to process 30K+ monthly transactions, improving data
-reliability, automating validation scripts, and supporting real-time reporting across distributed POS environments</li>
-                <li>Automated the entire POS testing lifecycle by creating end-to-end Java + Selenium pipelines within Azure DevOps,
-reducing manual QA time by 80% (10 hours to 2 hours) and enabling continuous integration/deployment on AWS-
-hosted environments</li>
-                <li>Coordinated Agile sprints with QA and engineering teams through Azure Boards, following SDLC and accelerating
-feature delivery cycles and ensuring on-time, high-quality releases across multiple deployment environments</li>
-              </ul>
+      <section id="experience" class="reveal">
+        <div class="title-row">
+          <h2>Experience</h2>
+          <div class="hint">/ experience</div>
+        </div>
+
+        <div class="list">
+          <div class="item">
+            <div class="row">
+              <div>
+                <strong>Software Engineering Intern — EDI Matrix</strong>
+                <div class="meta">Sept 2024 – Present · Columbus, OH (Hybrid)</div>
+                <ul class="bullets">
+                  <li>Designed and deployed end-to-end POS microservices using Java Spring Boot on AWS, integrating payment, inventory, and reporting modules to support 1,000+ secure transactions per day and improve system reliability</li>
+                  <li>Delivered well-documented, tested, and operable code by developing JUnit-based regression test suites using TDD, catching 95% of critical issues pre-release</li>
+                  <li>Engineered SQL-based ETL pipelines on Azure to process 30K+ monthly transactions, improving data reliability and supporting reporting across distributed POS environments</li>
+                  <li>Automated end-to-end test execution in Azure DevOps, reducing manual QA time by 80% (10 hours to 2 hours) and enabling consistent CI/CD validation</li>
+                  <li>Coordinated Agile sprints with QA and engineering teams through Azure Boards, accelerating feature delivery and ensuring on-time releases</li>
+                </ul>
+              </div>
+              <div><span class="pill">Java · Spring Boot · AWS · Azure · SQL · Agile</span></div>
             </div>
-            <div><span class="pill">Java · Spring Boot · AWS · Selenium</span></div>
-          </li>
-          <li class="row">
-            <div>
-              <strong>Web Developer & Tech Consultant — Sekai LLC</strong>
-              <div class="muted">Mar 2023 – Sept 2024</div>
-              <ul style="list-style:disc;margin-left:18px;margin-top:8px">
-                <li>Delivered 15+ cloud-hosted solutions using Python, SQL, JavaScript, HTML/CSS, and lightweight automation
-scripts for small businesses, boosting client conversion rates by 50% and streamlining site operations</li>
-                <li>Created Python automation pipelines leveraging REST APIs to sync orders and invoices into SQL databases,
-eliminating manual data entry and reducing errors to zero</li>
-              </ul>
+
+            <div class="company-divider" aria-hidden="true"></div>
+            <!-- Company Projects -->
+            <div class="company-wrap">
+              <div class="company-head">
+                <div class="company-title"><span class="label">Company projects</span></div>
+                <div class="muted mono" style="font-size:12px">EDI Matrix</div>
+              </div>
+
+              <div class="company-grid">
+                <div class="c-card">
+                  <div>
+                    <div class="c-top">
+                      <p class="c-name">EDI Stars</p>
+                      <span class="pill">Java · Spring · Angular · Azure</span>
+                    </div>
+                    <p class="c-desc">
+                      Contributed production features for EDI Stars supporting internal workflows and automation.
+                    </p>
+                  </div>
+                  <div class="p-links">
+                    <a class="link" href="https://www.edistars.com/" target="_blank" rel="noopener">Website</a>
+                  </div>
+                </div>
+
+                <div class="c-card">
+                  <div>
+                    <div class="c-top">
+                      <p class="c-name">AI-Powered Staffing Automation</p>
+                      <span class="pill">Python · REST APIs · Azure · ML</span>
+                    </div>
+                    <p class="c-desc">
+                      Built and shipped an AI-driven staffing automation pipeline into production, cutting staffing workflow time by 40%.
+                    </p>
+                  </div>
+                  <div class="muted mono" style="font-size:12px">In production</div>
+                </div>
+              </div>
             </div>
-            <div><span class="pill">JavaScript · SQL · Python · HTML/CSS</span></div>
-          </li>
-        </ul>
+          </div>
+
+          <div class="item">
+            <div class="row">
+              <div>
+                <strong>Web Developer & Tech Consultant — Sekai LLC</strong>
+                <div class="meta">Mar 2023 – Sept 2024</div>
+                <ul class="bullets">
+                  <li>Delivered 15+ cloud-hosted solutions using Python, SQL, JavaScript, HTML/CSS, and lightweight automation scripts for small businesses, boosting client conversion rates by 50% and streamlining site operations</li>
+                  <li>Created Python automation pipelines leveraging REST APIs to sync orders and invoices into SQL databases, eliminating manual data entry and reducing errors to zero</li>
+                </ul>
+              </div>
+              <div><span class="pill">JavaScript · SQL · Python · HTML/CSS</span></div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Projects -->
-      <section id="projects">
-        <h2>Projects</h2>
+      <section id="projects" class="reveal">
+        <div class="title-row">
+          <h2>Projects</h2>
+          <div class="hint">/ projects</div>
+        </div>
+
         <div class="grid">
-
-          
-          <!-- Project 2 -->
-          <div class="card">
-            <div class="row">
-              <strong>NBA Prediction Model</strong>
-              <span class="pill">Python · Pandas · PyTorch</span>
-            </div>
-            <p class="muted">
-              End-to-end pipeline that ingests NBA data (box scores/advanced stats), engineers features,
-              and generates game outcome predictions with ML models.
-            </p>
-            <div class="stack">
-              <a class="btn" href="https://github.com/akhaliq0/NBA-Prediction-Model" target="_blank" rel="noopener">GitHub</a>
-            </div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px">
-              In Progress
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="card">
-            <div class="row">
-              <strong>Cryptocurrency Prediction Model</strong>
+          <!-- Keep these first two -->
+          <div class="p-card">
+            <div class="p-head">
+              <p class="p-title">Cryptocurrency Prediction Model</p>
               <span class="pill">Python · NumPy · PyTorch · SQL</span>
             </div>
-            <p class="muted">Forecasts short-term crypto moves using OHLCV data, technical indicators, and ML models.</p>
-            <div class="stack">
-              <a class="btn" href="https://github.com/SsjRaz/Cryptocurrency-Prediction-Model" target="_blank" rel="noopener">GitHub</a>
+            <p class="p-desc">Forecasts short-term crypto moves using OHLCV data, technical indicators, and ML models.</p>
+            <div class="p-links">
+              <a class="link" href="https://github.com/SsjRaz/Cryptocurrency-Prediction-Model" target="_blank" rel="noopener">GitHub</a>
             </div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px">
-              In Progress
+            <div class="meta" style="margin-top:8px">In Progress</div>
+          </div>
+
+          <div class="p-card">
+            <div class="p-head">
+              <p class="p-title">NBA Prediction Model</p>
+              <span class="pill">Python · Pandas · PyTorch</span>
+            </div>
+            <p class="p-desc">
+              End-to-end pipeline that ingests NBA data (box scores/advanced stats), engineers features, and generates game outcome predictions with ML models.
+            </p>
+            <div class="p-links">
+              <a class="link" href="https://github.com/akhaliq0/NBA-Prediction-Model" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <div class="meta" style="margin-top:8px">In Progress</div>
+          </div>
+
+          <div class="p-card">
+            <div class="p-head">
+              <p class="p-title">SeeWithYou</p>
+              <span class="pill">Python · TypeScript · Node.js</span>
+            </div>
+            <p class="p-desc">
+              App for visually impaired users: capture an image and receive an audio response describing object distance and direction relative to the user.
+            </p>
+            <div class="p-links">
+              <a class="link" href="https://github.com/SsjRaz/SeeWithYou" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
 
-          <!-- Project 3 -->
-          <div class="card">
-            <div class="row">
-              <strong>AI-Powered Staffing Automation</strong>
-              <span class="pill">Python · Azure · ML</span>
+          <div class="p-card">
+            <div class="p-head">
+              <p class="p-title">CodeL</p>
+              <span class="pill">React · Game · UI</span>
             </div>
-            <p class="muted">Embeddings-based matching + automation pipelines (APIs, scraping, DB). Improved match accuracy ~60% and cut workflow time ~40% with parallel execution.</p>
-            <div class="stack">
-              <a class="btn" href="assets/AI-Powered-Staffing-Automation-Case_Study.pdf" target="_blank" rel="noopener">Case Study (PDF)</a>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="card">
-            <div class="row">
-              <strong>EDI Stars</strong>
-              <span class="pill">Java · Spring · Angular</span>
-            </div>
-            <p class="muted">SaaS on Azure for leads, bids, and tasks; microservice with vector embeddings auto-scores resumes vs JDs; 12+ Angular components for a multi-user dashboard.</p>
-            <div class="stack">
-              <a class="btn" href="assets/EDI-Stars-Document.pdf" target="_blank" rel="noopener">Screenshots/Overview (PDF)</a>
+            <p class="p-desc">
+              Wordle-style game, but for code: guess a snippet/structure with feedback on correctness and placement to refine solutions.
+            </p>
+            <div class="p-links">
+              <a class="link" href="https://github.com/SsjRaz/CodeL" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
+        </div>
       </section>
 
       <!-- Hackathons -->
-      <section id="hackathons">
-        <h2>Hackathons</h2>
-        <ul>
-          <li class="row">
-            <div>
-              <strong>HackOHI/O</strong>
-              <div class="muted">October 25–26, 2025 · Columbus, OH</div>
-              <div class="muted">Status: <em>To be attended</em></div>
+      <section id="hackathons" class="reveal">
+        <div class="title-row">
+          <h2>Hackathons</h2>
+          <div class="hint">/ hackathons</div>
+        </div>
+
+        <div class="list">
+          <div class="item">
+            <div class="row">
+              <div>
+                <strong>JPMorgan Chase — Code for Good (CareerRise)</strong>
+                <div class="meta">November 7–8, 2025</div>
+                <ul class="bullets">
+                  <li>Selected out of 12,000+ applicants to develop a real-world solution for CareerRise at JPMC Code for Good 2025, leading full-stack development (Python + React) to deliver a working prototype in 24 hours; voted “Best Teammate” by my team</li>
+                </ul>
+              </div>
+              <div><span class="pill">Python · React · 24-hour</span></div>
             </div>
-            <div><span class="pill">24-hr · Team-based</span></div>
-          </li>
-          <li class="row">
-            <div>
-              <strong>JPMorgan Chase — Code for Good</strong>
-              <div class="muted">November 7–8, 2025</div>
-              <div class="muted">Status: <em>To be attended</em></div>
+          </div>
+
+          <div class="item">
+            <div class="row">
+              <div>
+                <strong>HackOHI/O — SeeWithYou</strong>
+                <div class="meta">October 25–26, 2025 · Columbus, OH</div>
+                <ul class="bullets">
+                  <li>Built SeeWithYou: an accessibility-focused app for visually impaired users that turns a photo into an audio response describing object distance and direction relative to the user</li>
+                  <li>Implemented the capture-to-response flow and integrated the logic to produce navigation-style guidance</li>
+                </ul>
+              </div>
+              <div><span class="pill">Python · TypeScript · Node.js</span></div>
             </div>
-            <div><span class="pill">Social Impact · FinTech</span></div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </section>
 
       <!-- Contact -->
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>📬 <a href="mailto:Sherazssj20@gmail.com">Sherazssj20@gmail.com</a> · 📱 <a href="tel:+16145866575">(614) 586-6575</a></p>
+      <section id="contact" class="reveal">
+        <div class="title-row">
+          <h2>Contact</h2>
+          <div class="hint">/ contact</div>
+        </div>
+
+        <div class="contact">
+          <div class="contact-card">
+            <div>
+              <div class="contact-k">email</div>
+              <div class="contact-v"><a href="mailto:Sherazssj20@gmail.com">Sherazssj20@gmail.com</a></div>
+            </div>
+            <a class="pill" href="mailto:Sherazssj20@gmail.com">Message</a>
+          </div>
+
+          <div class="contact-card">
+            <div>
+              <div class="contact-k">links</div>
+              <div class="contact-v">
+                <a href="https://www.linkedin.com/in/sheraz-ahmed-ssjraz" target="_blank" rel="noopener">LinkedIn</a>
+                <span class="muted"> · </span>
+                <a href="https://github.com/SsjRaz" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+            <span class="pill">Public</span>
+          </div>
+        </div>
       </section>
+
     </main>
 
     <footer>
-      <div>© <span id="y"></span> Sheraz Ahmed · Built with HTML/CSS</div>
+      <div>© <span id="y"></span> Sheraz Ahmed</div>
     </footer>
   </div>
 
@@ -284,7 +723,7 @@ eliminating manual data entry and reducing errors to zero</li>
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Scroll-spy to highlight active section in the top nav
+    // Scroll-spy for active nav state
     const sections = [...document.querySelectorAll('main section[id]')];
     const navLinks = [...document.querySelectorAll('#topnav a')];
     const map = new Map(sections.map(s => [s.id, navLinks.find(a => a.getAttribute('href') === `#${s.id}`)]));
@@ -293,17 +732,29 @@ eliminating manual data entry and reducing errors to zero</li>
       entries.forEach(entry => {
         const link = map.get(entry.target.id);
         if (!link) return;
+
         if (entry.isIntersecting) {
-          navLinks.forEach(a => a.classList.remove('active'));
+          navLinks.forEach(a => {
+            a.classList.remove('active');
+            a.removeAttribute('aria-current');
+          });
           link.classList.add('active');
           link.setAttribute('aria-current','page');
-        } else {
-          link.removeAttribute('aria-current');
         }
       });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 0.3, 1] });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.25, 1] });
 
     sections.forEach(s => io.observe(s));
+
+    // Reveal-on-scroll animation
+    const revealItems = [...document.querySelectorAll('.reveal')];
+    const rio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('in');
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach(el => rio.observe(el));
+
   </script>
 </body>
 </html>
